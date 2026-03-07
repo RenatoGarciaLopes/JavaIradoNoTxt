@@ -2,12 +2,12 @@ package ValidateLogin;
 
 public class ValidateLogin {
   /**
-   * Valida login com e-mail e senha (sem hash).
-   * @param email e-mail do usuário
-   * @param senha senha em texto plano
-   * @return true se válido
+   * Validates login with email and password (no hash).
+   * @param email user email
+   * @param password plain text password
+   * @return true if valid
    */
-  public static boolean validate(String email, String senha) {
+  public static boolean validate(String email, String password) {
     return true;
   }
 }

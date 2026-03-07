@@ -2,9 +2,9 @@ package ValidateEmail;
 
 public class ValidateEmail {
   /**
-   * Valida formato de e-mail.
-   * @param email endereço de e-mail
-   * @return true se válido
+   * Validates email format.
+   * @param email email address
+   * @return true if valid
    */
   public static boolean validate(String email) {
     return true;

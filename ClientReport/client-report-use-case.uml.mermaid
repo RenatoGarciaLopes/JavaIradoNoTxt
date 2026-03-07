@@ -1,0 +1,8 @@
+flowchart TD
+    A[fa:fa-user User]
+    B(fa:fa-box ClientReport)
+    C(fa:fa-box-open printReport)
+
+    A -->| TXT file | B
+    B -->| client data | C
+    C -->| report on screen | A

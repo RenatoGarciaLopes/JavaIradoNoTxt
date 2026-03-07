@@ -1,0 +1,8 @@
+flowchart TD
+    A[fa:fa-user User]
+    B(fa:fa-box StatesCSVReader)
+    C(fa:fa-box-open readAndDisplay)
+
+    A -->| CSV file | B
+    B -->| code UF, acronym, name | C
+    C -->| display on screen | A

@@ -1,0 +1,8 @@
+flowchart TD
+    A[fa:fa-user User]
+    B(fa:fa-box ClientRegistration)
+    C(fa:fa-box-open save)
+
+    A -->| name, cpf, email | B
+    B -->| data | C
+    C -->| TXT file | A
