@@ -1,2 +1,6 @@
 classDiagram
-    ValidateCPF : +bool validate(string cpf)
+class ValidateCPF {
+    -ValidateCPF()
+    +validate(cpf : String) : boolean
+    -calculateDigit(cpf : String, length : int, weightStart : int) : int
+}

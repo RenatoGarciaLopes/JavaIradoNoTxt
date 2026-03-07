@@ -1,2 +1,8 @@
 classDiagram
-    ValidateCNPJ : +bool validate(string cnpj)
+class ValidateCNPJ {
+    -FIRST_WEIGHTS : int[]
+    -SECOND_WEIGHTS : int[]
+    -ValidateCNPJ()
+    +validate(cnpj : String) : boolean
+    -calculateDigit(digits : String, weights : int[]) : int
+}
