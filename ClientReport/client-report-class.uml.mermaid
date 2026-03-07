@@ -1,4 +1,6 @@
 classDiagram
-    ClientReport : -string filePath
-    ClientReport : +void setFilePath(string path)
-    ClientReport : +void printReport()
+    class ClientReport {
+        -String filePath
+        +setFilePath(String path) void
+        +printReport() void
+    }

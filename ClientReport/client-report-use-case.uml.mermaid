@@ -1,8 +1,10 @@
-flowchart TD
-    A[fa:fa-user User]
-    B(fa:fa-box ClientReport)
-    C(fa:fa-box-open printReport)
+flowchart LR
+    A[User]
 
-    A -->| TXT file | B
-    B -->| client data | C
-    C -->| report on screen | A
+    B((Import TXT file))
+    C((Generate report))
+    D((View report))
+
+    A --> B
+    A --> C
+    A --> D
