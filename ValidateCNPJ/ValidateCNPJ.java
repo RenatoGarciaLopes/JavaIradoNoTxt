@@ -1,5 +1,26 @@
 package ValidateCNPJ;
 
+/**
+ * Utility class responsible for validating Brazilian CNPJ numbers.
+ *
+ * <p>
+ * The CNPJ (Cadastro Nacional da Pessoa Jurídica) is a Brazilian
+ * company identification number composed of 14 digits.
+ * The last two digits are verification digits calculated
+ * from the preceding digits.
+ * </p>
+ *
+ * <p>
+ * This validator performs the following checks:
+ * <ul>
+ *   <li>Checks if the input is null or blank</li>
+ *   <li>Removes non-numeric characters</li>
+ *   <li>Ensures the CNPJ has exactly 14 digits</li>
+ *   <li>Rejects sequences with all identical digits</li>
+ *   <li>Validates the two verification digits</li>
+ * </ul>
+ * </p>
+ */
 public class ValidateCNPJ {
 
   private ValidateCNPJ() { }

@@ -1,5 +1,25 @@
 package ValidateCPF;
 
+/**
+ * Utility class responsible for validating Brazilian CPF numbers.
+ *
+ * <p>
+ * The CPF (Cadastro de Pessoas Físicas) is an identification number
+ * used in Brazil composed of 11 digits. The last two digits are
+ * verification digits calculated from the previous numbers.
+ * </p>
+ *
+ * <p>
+ * This class validates CPF numbers by:
+ * <ul>
+ *   <li>Checking for null or blank input</li>
+ *   <li>Removing non-numeric characters</li>
+ *   <li>Ensuring the CPF contains exactly 11 digits</li>
+ *   <li>Rejecting CPFs with all digits equal</li>
+ *   <li>Validating the verification digits</li>
+ * </ul>
+ * </p>
+ */
 public class ValidateCPF {
   
   private ValidateCPF() { }
