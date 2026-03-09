@@ -1,6 +1,10 @@
-flowchart TD
-    A[fa:fa-user User]
-    B(fa:fa-box-open ValidateLogin.validate)
+flowchart LR
+    A[fa:fa-user Usuario]
+    B((Executar isValid))
+    C((Validar e-mail com ValidateEmail))
+    D((Comparar senha com DEFAULT_PASSWORD))
 
-    A -->| email, password | B
-    B -->| true or false | A
+    A -->|informar e-mail e senha| B
+    B -.->|"<<include>>"| C
+    B -.->|"<<include>>"| D
+    B -->|retorno true ou false| A
