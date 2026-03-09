@@ -3,15 +3,6 @@ package ValidateEmail;
 /**
  * Utility class responsible for validating email addresses.
  *
- * <p>
- * Validates the format of an email address by checking:
- * <ul>
- *   <li>Non-null and non-blank input</li>
- *   <li>Presence of exactly one {@code @} symbol</li>
- *   <li>Valid local part (before {@code @})</li>
- *   <li>Valid domain part (after {@code @})</li>
- * </ul>
- * </p>
  */
 public class ValidateEmail {
 
