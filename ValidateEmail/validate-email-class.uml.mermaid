@@ -1,2 +1,13 @@
 classDiagram
-    ValidateEmail : +bool validate(string email)
+class ValidateEmail {
+    -LOCAL_PART_PATTERN : String
+    -DOMAIN_CHAR_PATTERN : String
+    -DOMAIN_LABEL_PATTERN : String
+    -MAX_LOCAL_LENGTH : int
+    -MAX_DOMAIN_LENGTH : int
+    -MIN_TLD_LENGTH : int
+    -ValidateEmail()
+    +validate(email : String) : boolean
+    -isValidLocalPart(localPart : String) : boolean
+    -isValidDomain(domain : String) : boolean
+}
