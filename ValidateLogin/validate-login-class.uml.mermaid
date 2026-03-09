@@ -1,2 +1,18 @@
 classDiagram
-    ValidateLogin : +bool validate(string email, string password)
+    class ValidateLogin {
+        -String DEFAULT_PASSWORD
+        -int MIN_PASSWORD_LENGTH
+        -int MAX_PASSWORD_LENGTH
+        -String email
+        -String password
+        -ValidateLogin(string email, string password)
+        +bool isValid()
+        -bool hasValidEmail(string email)
+        -bool hasValidPassword(string password)
+    }
+
+    class ValidateEmail {
+        +bool validate(string email)
+    }
+
+    ValidateLogin ..> ValidateEmail : usa
