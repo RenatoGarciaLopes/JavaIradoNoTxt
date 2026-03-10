@@ -9,19 +9,22 @@ import java.time.format.DateTimeFormatter;
 /**
  * Lê um arquivo TXT com dados de clientes e imprime um relatório na tela.
  * <p>
- * Formato esperado do TXT: uma linha por cliente, campos separados por " | ":
- * CPF | e-mail | nome
+ * Aceita dois formatos de entrada:
+ * <ul>
+ *   <li>Simples: CPF | e-mail | nome</li>
+ *   <li>Com timestamp: [dd-mm-yyyyThh:mm:ss] | CPF | e-mail | nome</li>
+ * </ul>
  * <p>
- * Formato de cada linha do relatório: [dd-mm-yyyyThh:mm:ss] CPF | e-mail | nome
+ * Formato de saída: [dd-mm-yyyyThh:mm:ss] CPF | e-mail | nome
  */
 public class ClientReport {
 
-  /** Formato do horário no log: dia-mês-anoThora:minuto:segundo */
+  /** Formato do horário no log */
   private static final DateTimeFormatter LOG_TIME =
       DateTimeFormatter.ofPattern("dd-MM-yyyy'T'HH:mm:ss");
 
   /** SEPARADOR de campos no TXT e no log (espaço, pipe, espaço) */
-  private static final String SEPARATOR = " | ";
+  private static final String SEPARATOR = " \\| ";
 
   private String filePath;
 
@@ -37,25 +40,36 @@ public class ClientReport {
 
     for (String line : linhas) {
       String trimmedLine = line.trim();
-      if (trimmedLine.isEmpty()) 
-      {
+      if (trimmedLine.isEmpty()) {
         continue;
       }
 
-      // Quebra a linha nos campos: CPF | e-mail | nome
       String[] fields = trimmedLine.split(SEPARATOR);
 
-      if (fields.length < 3) 
-      {
-        continue;
+      String cpf;
+      String email;
+      String nome;
+
+      // Formato com timestamp: [dd-mm-yyyyThh:mm:ss] | CPF | e-mail | nome
+      if (fields.length >= 4 && fields[0].trim().startsWith("[")) {
+        String timestamp = fields[0].trim();
+        cpf = fields[1].trim();
+        email = fields[2].trim();
+        nome = fields[3].trim();
+
+        System.out.printf("%s | %s | %s | %s%n", timestamp, cpf, email, nome);
+
       }
+      // Formato simples: CPF | e-mail | nome
+      else
+      {
+        cpf = fields[0].trim();
+        email = fields[1].trim();
+        nome = fields[2].trim();
 
-      String cpf = fields[0].trim();
-      String email = fields[1].trim();
-      String nome = fields[2].trim();
-
-      String timestamp = LocalDateTime.now().format(LOG_TIME);
-      System.out.printf("[%s] %s | %s | %s%n", timestamp, cpf, email, nome);
+        String timestamp = LocalDateTime.now().format(LOG_TIME);
+        System.out.printf("[%s] | %s | %s | %s%n", timestamp, cpf, email, nome);
+      }
     }
   }
 }

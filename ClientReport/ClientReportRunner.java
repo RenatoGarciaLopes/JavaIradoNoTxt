@@ -11,7 +11,7 @@ import java.nio.file.Paths;
 public class ClientReportRunner {
 
   public static void main(String[] args) {
-    Path exemplo = Paths.get("ClientReport", "exemplo-clientes.txt");
+    Path exemplo = Paths.get("ClientReport", "clients_test.txt");
 
     ClientReport report = new ClientReport();
     report.setFilePath(exemplo.toString());

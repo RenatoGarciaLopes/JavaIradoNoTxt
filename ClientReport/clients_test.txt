@@ -1,0 +1,3 @@
+[10-03-2026T20:15:10] | 123.456.789-00 | ana.silva@email.com | Ana Silva
+[10-03-2026T20:15:10] | 987.654.321-11 | carlos@provedor.com.br | Carlos Souza
+[10-03-2026T20:15:10] | 111.222.333-44 | beatriz.o@empresa.com | Beatriz Oliveira
