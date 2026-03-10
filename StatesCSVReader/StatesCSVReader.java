@@ -26,8 +26,9 @@ public class StatesCSVReader {
 
   /**
    * Parses the CSV file and returns a list of states.
+   * @param <Estado>
    */
-  public List<Estado> read() throws IOException {
+  public <Estado> List<Estado> read() throws IOException {
 
     List<Estado> estados = new ArrayList<>();
 
@@ -57,8 +58,9 @@ public class StatesCSVReader {
 
   /**
    * Reads the CSV and prints each state's information to
+   * @param <Estado>
    */
-  public void display() throws IOException {
+  public <Estado> void display() throws IOException {
 
     List<Estado> estados = read();
 
@@ -74,7 +76,7 @@ public class StatesCSVReader {
   /**
    * Value object representing a Brazilian state.
    */
-  public record Estado(int codigoUF, String sigla, String nome) { }
+  public void Estado(int codigoUF, String sigla, String nome) { }
 
   public static void main(String[] args) throws IOException {
     Path path = Path.of("LeituraCSVEstados", "estados.csv");
