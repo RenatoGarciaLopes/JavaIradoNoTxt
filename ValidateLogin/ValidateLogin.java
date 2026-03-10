@@ -15,7 +15,7 @@ public class ValidateLogin {
   private String email;
   private String password;
 
-  private ValidateLogin(String email, String password) {
+  public ValidateLogin(String email, String password) {
     this.email = email;
     this.password = password;
   }
