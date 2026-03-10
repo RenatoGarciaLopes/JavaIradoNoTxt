@@ -21,7 +21,7 @@ public class ClientReport {
       DateTimeFormatter.ofPattern("dd-MM-yyyy'T'HH:mm:ss");
 
   /** SEPARADOR de campos no TXT e no log (espaço, pipe, espaço) */
-  private static final String SEPARATOR = " \\| ";
+  private static final String SEPARATOR = " | ";
 
   private String filePath;
 
