@@ -1,4 +1,4 @@
-package LeituraCSVEstados;
+package StatesCSVReader;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -10,7 +10,7 @@ import java.util.List;
 /**
  * Reads a CSV file containing Brazilian states and displays
  */
-public class LeituraCSVEstados {
+public class StatesCSVReader {
 
   private static final String SEPARATOR = ";";
   private static final int EXPECTED_COLUMNS = 3;
@@ -20,7 +20,7 @@ public class LeituraCSVEstados {
   /**
    * @param csvPath path to the CSV file with state data
    */
-  public LeituraCSVEstados(Path csvPath) {
+  public StatesCSVReader(Path csvPath) {
     this.csvPath = csvPath;
   }
 
@@ -78,7 +78,7 @@ public class LeituraCSVEstados {
 
   public static void main(String[] args) throws IOException {
     Path path = Path.of("LeituraCSVEstados", "estados.csv");
-    new LeituraCSVEstados(path).display();
+    new StatesCSVReader(path).display();
   }
 
 }
