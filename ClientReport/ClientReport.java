@@ -3,25 +3,21 @@ package ClientReport;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 
 /**
- * Reads a TXT file containing client data and prints a report to the console.
+ * Utility class responsible for reading TXT files containing client data
+ * and printing each valid record as a log line.
+ *
  * <p>
- * Accepts two input formats:
- * <ul>
- *   <li>Simple: CPF | email | name</li>
- *   <li>With timestamp: [dd-mm-yyyyThh:mm:ss] | CPF | email | name</li>
- * </ul>
- * <p>
- * Output format: [dd-mm-yyyyThh:mm:ss] CPF | email | name
+ * This class expects each non-blank line to start with a timestamp in
+ * square brackets followed by the client information, for example:
+ * {@code [dd-MM-yyyy'T'HH:mm:ss] CPF | email | name}.
+ * Lines that do not follow this pattern or that do not contain at least
+ * CPF, email and name are ignored.
+ * </p>
  */
 public class ClientReport {
 
-  /** Timestamp format used in logs. */
-  private static final DateTimeFormatter LOG_TIME =
-      DateTimeFormatter.ofPattern("dd-MM-yyyy'T'HH:mm:ss");
 
   /** Field separator in input TXT and output logs (space, pipe, space). */
   private static final String SEPARATOR = " \\| ";
@@ -33,7 +29,16 @@ public class ClientReport {
   }
 
   /**
-   * Reads the configured filePath and prints each client in log format.
+   * Reads the configured {@code filePath}, extracts client information from
+   * each non-blank line that starts with a timestamp in square brackets and
+   * prints it as a log entry.
+   *
+   * <p>
+   * Lines that do not contain a closing bracket for the timestamp or do not
+   * provide at least CPF, email and name after the timestamp are ignored.
+   * </p>
+   *
+   * @throws IOException if an I/O error occurs while reading the file
    */
   public void printReport() throws IOException {
     var lines = Files.readAllLines(Paths.get(filePath));
@@ -43,33 +48,34 @@ public class ClientReport {
       if (trimmedLine.isEmpty()) {
         continue;
       }
-
-      String[] fields = trimmedLine.split(SEPARATOR);
-
+      
+      String timestamp;
       String cpf;
       String email;
       String name;
 
-      // Format with timestamp: [dd-mm-yyyyThh:mm:ss] | CPF | email | name
-      if (fields.length >= 4 && fields[0].trim().startsWith("[")) {
-        String timestamp = fields[0].trim();
-        cpf = fields[1].trim();
-        email = fields[2].trim();
-        name = fields[3].trim();
-
-        System.out.printf("%s | %s | %s | %s%n", timestamp, cpf, email, name);
-
+      
+      int endIdx = trimmedLine.indexOf(']');
+      if (endIdx < 0) {
+        continue;
       }
-      // Simple format: CPF | email | name
-      else
-      {
-        cpf = fields[0].trim();
-        email = fields[1].trim();
-        name = fields[2].trim();
 
-        String timestamp = LocalDateTime.now().format(LOG_TIME);
-        System.out.printf("[%s] | %s | %s | %s%n", timestamp, cpf, email, name);
+      timestamp = trimmedLine.substring(0, endIdx + 1).trim();
+      String rest = trimmedLine.substring(endIdx + 1).trim();
+
+
+      String[] fields = rest.split(SEPARATOR);
+      if (fields.length < 3) {
+        continue;
       }
+
+      cpf = fields[0].trim();
+      email = fields[1].trim();
+      name = fields[2].trim();
+
+      
+
+      System.out.printf("%s %s | %s | %s%n", timestamp, cpf, email, name);
     }
   }
 }
