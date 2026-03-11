@@ -2,7 +2,6 @@ package StatesCSVReader;
 
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.lang.Thread.State;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
@@ -76,7 +75,7 @@ public class StatesCSVReader {
   /**
    * Value object representing a Brazilian state.
    */
-  public void State(int stateCode, String abbreviation, String name) { }
+  public record State(int stateCode, String abbreviation, String name) { }
 
   public static void main(String[] args) throws IOException {
     Path path = Path.of("StatesCSVReader", "states.csv");
