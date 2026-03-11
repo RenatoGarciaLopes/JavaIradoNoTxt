@@ -14,7 +14,7 @@ public class TestValidateCPF {
 
     for (String cpf : testCpfs) {
       boolean isValid = ValidateCPF.validate(cpf);
-      System.out.printf("CPF: %s - Válido: %b%n", cpf, isValid);
+      System.out.printf("CPF: %s - Valid: %b%n", cpf, isValid);
     }
   }
 

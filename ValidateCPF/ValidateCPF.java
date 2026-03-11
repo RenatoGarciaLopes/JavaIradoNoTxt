@@ -4,7 +4,7 @@ package ValidateCPF;
  * Utility class responsible for validating Brazilian CPF numbers.
  *
  * <p>
- * The CPF (Cadastro de Pessoas Físicas) is an identification number
+ * The CPF (Brazilian Individual Taxpayer Registry) is an identification number
  * used in Brazil composed of 11 digits. The last two digits are
  * verification digits calculated from the previous numbers.
  * </p>
