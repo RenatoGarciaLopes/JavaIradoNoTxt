@@ -1,4 +1,5 @@
 classDiagram
-    ClientRegistration : -string filePath
-    ClientRegistration : +void save(string name, string cpf, string email)
-    ClientRegistration : +void setFilePath(string path)
+    ClientRegistration : -SEPARATOR String
+    ClientRegistration : -filePath String
+    ClientRegistration : +setFilePath(path String) void
+    ClientRegistration : +save(name String, cpf String, email String) void throws IOException

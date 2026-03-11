@@ -8,7 +8,7 @@ import java.nio.file.Paths;
  * Example class that uses {@link ClientReport} to read a client file
  * and print the report to the console.
  */
-public class ClientReportRunner {
+public class TestClientReport {
 
   public static void main(String[] args) {
     Path samplePath = Paths.get("ClientReport", "clients_test.txt");

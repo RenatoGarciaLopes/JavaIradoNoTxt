@@ -1,6 +1,6 @@
 classDiagram
-class ValidateCPF {
-    -ValidateCPF()
-    +validate(cpf : String) : boolean
-    -calculateDigit(cpf : String, length : int, weightStart : int) : int
-}
+    class ValidateCPF {
+        -ValidateCPF()
+        +validate(cpf : String) : boolean
+        -calculateDigit(digits : String, length : int, weightStart : int) : int
+    }

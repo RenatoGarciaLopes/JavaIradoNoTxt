@@ -2,9 +2,11 @@ flowchart LR
     A[fa:fa-user Usuario]
     B((Executar isValid))
     C((Validar e-mail com ValidateEmail))
-    D((Comparar senha com DEFAULT_PASSWORD))
+    D((Validar senha: nao nula, nao vazia e tamanho 8..254))
+    E((Comparar senha com mapa USERS))
 
     A -->|informar e-mail e senha| B
     B -.->|"<<include>>"| C
     B -.->|"<<include>>"| D
+    B -.->|"<<include>>"| E
     B -->|retorno true ou false| A

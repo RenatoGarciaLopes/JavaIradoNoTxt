@@ -8,7 +8,7 @@ public class TestStatesCSVReader {
   public static void main(String[] args) {
 
     Path[] testPaths = {
-        Paths.get("StatesCSVReader/estados.csv"), // Caminho válido
+        Paths.get("StatesCSVReader/states.csv"), // Caminho válido
         Paths.get("invalid/path.csv"),             // Caminho inválido
         null                                       // Caminho nulo
     };

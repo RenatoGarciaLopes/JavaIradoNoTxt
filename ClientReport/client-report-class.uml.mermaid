@@ -1,6 +1,7 @@
 classDiagram
     class ClientReport {
+        -SEPARATOR : String
         -String filePath
         +setFilePath(String path) void
-        +printReport() void
+        +printReport() void throws IOException
     }

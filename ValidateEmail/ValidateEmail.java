@@ -9,8 +9,6 @@ public class ValidateEmail {
   private static final String LOCAL_PART_PATTERN = "^[a-zA-Z0-9._%+-]+$";
   private static final String DOMAIN_CHAR_PATTERN = "^[a-zA-Z0-9.-]+$";
   private static final String DOMAIN_LABEL_PATTERN = "^[a-zA-Z0-9]([a-zA-Z0-9-]*[a-zA-Z0-9])?$";
-  private static final int MAX_LOCAL_LENGTH = 64;
-  private static final int MAX_DOMAIN_LENGTH = 255;
   private static final int MIN_TLD_LENGTH = 2;
 
   private ValidateEmail() { }
@@ -36,7 +34,7 @@ public class ValidateEmail {
    */
   private static boolean isValidLocalPart(String localPart) {
 
-    if (localPart.isEmpty() || localPart.length() > MAX_LOCAL_LENGTH)
+    if (localPart.isEmpty())
       return false;
 
     if (localPart.startsWith(".") || localPart.endsWith("."))
@@ -53,7 +51,7 @@ public class ValidateEmail {
    */
   private static boolean isValidDomain(String domain) {
 
-    if (domain.isEmpty() || domain.length() > MAX_DOMAIN_LENGTH)
+    if (domain.isEmpty())
       return false;
 
     if (!domain.matches(DOMAIN_CHAR_PATTERN))

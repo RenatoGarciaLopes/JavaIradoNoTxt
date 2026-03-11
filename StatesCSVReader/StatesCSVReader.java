@@ -27,9 +27,9 @@ public class StatesCSVReader {
   /**
    * Parses the CSV file and returns a list of states.
    */
-  public List<State> read() throws IOException {
+  public List<String[]> read() throws IOException {
 
-    List<State> states = new ArrayList<>();
+    List<String[]> states = new ArrayList<>();
 
     try (BufferedReader reader = Files.newBufferedReader(csvPath)) {
       reader.readLine();
@@ -44,11 +44,11 @@ public class StatesCSVReader {
         if (columns.length != EXPECTED_COLUMNS)
           continue;
 
-        states.add(new State(
-            Integer.parseInt(columns[0].trim()),
+        states.add(new String[] {
+            columns[0].trim(),
             columns[1].trim(),
             columns[2].trim()
-        ));
+        });
       }
     }
 
@@ -60,22 +60,17 @@ public class StatesCSVReader {
    */
   public void display() throws IOException {
 
-    List<State> states = read();
+    List<String[]> states = read();
 
     System.out.printf("%-12s %-8s %s%n", "State Code", "Abbr", "Name");
     // Java 8 compatibility: build a line of 45 dashes
     System.out.println(new String(new char[45]).replace('\0', '-'));
 
-    for (State state : states) {
-      System.out.printf("%-12d %-8s %s%n",
-          state.stateCode(), state.abbreviation(), state.name());
+    for (String[] state : states) {
+      System.out.printf("%-12s %-8s %s%n",
+          state[0], state[1], state[2]);
     }
   }
-
-  /**
-   * Value object representing a Brazilian state.
-   */
-  public record State(int stateCode, String abbreviation, String name) { }
 
   public static void main(String[] args) throws IOException {
     Path path = Path.of("StatesCSVReader", "states.csv");

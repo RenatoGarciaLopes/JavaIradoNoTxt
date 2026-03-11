@@ -1,18 +1,18 @@
 classDiagram
     class ValidateLogin {
-        -String DEFAULT_PASSWORD
-        -int MIN_PASSWORD_LENGTH
-        -int MAX_PASSWORD_LENGTH
+        -Map~String, String~ USERS
+        -MIN_PASSWORD_LENGTH : int
+        -MAX_PASSWORD_LENGTH : int
         -String email
         -String password
-        -ValidateLogin(string email, string password)
-        +bool isValid()
-        -bool hasValidEmail(string email)
-        -bool hasValidPassword(string password)
+        +ValidateLogin(String email, String password)
+        +boolean isValid()
+        -boolean hasValidEmail(String email)
+        -boolean hasValidPassword(String password)
     }
 
     class ValidateEmail {
-        +bool validate(string email)
+        +validate(String email) : boolean
     }
 
-    ValidateLogin ..> ValidateEmail : usa
+    ValidateLogin ..> ValidateEmail : uses
