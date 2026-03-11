@@ -1,19 +1,19 @@
 classDiagram
-class Estado {
-    -codigoUF : int
-    -sigla : String
-    -nome : String
-    +codigoUF() : int
-    +sigla() : String
-    +nome() : String
+class States {
+    -stateCode : int
+    -abbreviation : String
+    -name : String
+    +stateCode() : int
+    +abbreviation() : String
+    +name() : String
 }
-class LeituraCSVEstados {
+class StatesCSVReader {
     -SEPARATOR : String
     -EXPECTED_COLUMNS : int
     -csvPath : Path
-    +LeituraCSVEstados(csvPath : Path)
-    +read() : List~Estado~
+    +StatesCSVReader(csvPath : Path)
+    +read() : List~State~
     +display() : void
     +main(args : String[]) : void
 }
-LeituraCSVEstados --> Estado : cria
+StatesCSVReader --> State : creates
