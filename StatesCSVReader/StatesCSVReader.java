@@ -26,11 +26,10 @@ public class StatesCSVReader {
 
   /**
    * Parses the CSV file and returns a list of states.
-   * @param <Estado>
    */
-  public <Estado> List<Estado> read() throws IOException {
+  public List<State> read() throws IOException {
 
-    List<Estado> estados = new ArrayList<>();
+    List<State> states = new ArrayList<>();
 
     try (BufferedReader reader = Files.newBufferedReader(csvPath)) {
       reader.readLine();
@@ -45,7 +44,7 @@ public class StatesCSVReader {
         if (columns.length != EXPECTED_COLUMNS)
           continue;
 
-        estados.add(new Estado(
+        states.add(new State(
             Integer.parseInt(columns[0].trim()),
             columns[1].trim(),
             columns[2].trim()
@@ -53,33 +52,32 @@ public class StatesCSVReader {
       }
     }
 
-    return estados;
+    return states;
   }
 
   /**
-   * Reads the CSV and prints each state's information to
-   * @param <Estado>
+   * Reads the CSV and prints each state's information.
    */
-  public <Estado> void display() throws IOException {
+  public void display() throws IOException {
 
-    List<Estado> estados = read();
+    List<State> states = read();
 
-    System.out.printf("%-12s %-8s %s%n", "Código UF", "Sigla", "Nome");
+    System.out.printf("%-12s %-8s %s%n", "State Code", "Abbr", "Name");
     System.out.println("-".repeat(45));
 
-    for (Estado estado : estados) {
+    for (State state : states) {
       System.out.printf("%-12d %-8s %s%n",
-          estado.codigoUF(), estado.sigla(), estado.nome());
+          state.stateCode(), state.abbreviation(), state.name());
     }
   }
 
   /**
    * Value object representing a Brazilian state.
    */
-  public void Estado(int codigoUF, String sigla, String nome) { }
+  public record State(int stateCode, String abbreviation, String name) { }
 
   public static void main(String[] args) throws IOException {
-    Path path = Path.of("LeituraCSVEstados", "estados.csv");
+    Path path = Path.of("StatesCSVReader", "states.csv");
     new StatesCSVReader(path).display();
   }
 

@@ -15,7 +15,7 @@ public class TestValidateCNPJ {
 
     for (String cnpj : testCnpjs) {
       boolean isValid = ValidateCNPJ.validate(cnpj);
-      System.out.printf("CNPJ: %s - Válido: %b%n", cnpj, isValid);
+      System.out.printf("CNPJ: %s - Valid: %b%n", cnpj, isValid);
     }
   }
 
