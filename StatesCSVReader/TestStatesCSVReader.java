@@ -2,13 +2,15 @@ package StatesCSVReader;
 
 import java.io.IOException;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 
 public class TestStatesCSVReader {
   public static void main(String[] args) {
+
     Path[] testPaths = {
-        Path.of("StatesCSVReader/states.csv"), // Valid path
-        Path.of("invalid/path.csv"),            // Invalid path
-        null                                    // Null path
+        Paths.get("StatesCSVReader/estados.csv"), // Caminho válido
+        Paths.get("invalid/path.csv"),             // Caminho inválido
+        null                                       // Caminho nulo
     };
 
     for (Path path : testPaths) {
